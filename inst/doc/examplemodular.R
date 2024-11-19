@@ -4,7 +4,7 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 
-## ---- message=FALSE, warning=FALSE--------------------------------------------
+## ----message=FALSE, warning=FALSE---------------------------------------------
 # Name: Datacut Template Code - Modular Approach
 
 # Creating data to be cut ------------------------------------------------
@@ -15,7 +15,10 @@ library(lubridate)
 library(stringr)
 library(purrr)
 
-source_data <- list(ds = datacutr_ds, dm = datacutr_dm, ae = datacutr_ae, sc = datacutr_sc, lb = datacutr_lb, fa = datacutr_fa, ts = datacutr_ts)
+source_data <- list(
+  ds = datacutr_ds, dm = datacutr_dm, ae = datacutr_ae, sc = datacutr_sc,
+  lb = datacutr_lb, fa = datacutr_fa, ts = datacutr_ts
+)
 
 
 # Create DCUT ------------------------------------------------------------

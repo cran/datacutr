@@ -4,7 +4,7 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 
-## ---- message=FALSE, warning=FALSE--------------------------------------------
+## ----message=FALSE, warning=FALSE---------------------------------------------
 library(datacutr)
 library(admiraldev)
 library(dplyr)
@@ -13,9 +13,12 @@ library(stringr)
 library(purrr)
 library(rlang)
 
-source_data <- list(ds = datacutr_ds, dm = datacutr_dm, ae = datacutr_ae, sc = datacutr_sc, lb = datacutr_lb, fa = datacutr_fa, ts = datacutr_ts)
+source_data <- list(
+  ds = datacutr_ds, dm = datacutr_dm, ae = datacutr_ae, sc = datacutr_sc,
+  lb = datacutr_lb, fa = datacutr_fa, ts = datacutr_ts
+)
 
-## ---- message=FALSE, warning=FALSE--------------------------------------------
+## ----message=FALSE, warning=FALSE---------------------------------------------
 dcut <- create_dcut(
   dataset_ds = source_data$ds,
   ds_date_var = DSSTDTC,
@@ -24,13 +27,13 @@ dcut <- create_dcut(
   cut_description = "Clinical Cutoff Date"
 )
 
-## ---- eval=TRUE, echo=FALSE---------------------------------------------------
+## ----eval=TRUE, echo=FALSE----------------------------------------------------
 dataset_vignette(
   dcut,
   display_vars = exprs(USUBJID, DCUTDTC, DCUTDTM, DCUTDESC)
 )
 
-## ---- message=FALSE, warning=FALSE--------------------------------------------
+## ----message=FALSE, warning=FALSE---------------------------------------------
 source_data$fa <- source_data$fa %>%
   mutate(DCUT_TEMP_FAXDTC = case_when(
     FASTDTC != "" ~ FASTDTC,
@@ -38,7 +41,7 @@ source_data$fa <- source_data$fa %>%
     TRUE ~ as.character(NA)
   ))
 
-## ---- message=FALSE, warning=FALSE--------------------------------------------
+## ----message=FALSE, warning=FALSE---------------------------------------------
 cut_data <- process_cut(
   source_sdtm_data = source_data,
   patient_cut_v = c("sc", "ds"),
