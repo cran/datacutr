@@ -1,6 +1,6 @@
-28d2d463fc11ca0590a8b6032a12995b *DESCRIPTION
+35dd8caccbfc61352ad62934d9974a68 *DESCRIPTION
 0ca12c7b1c80860da71cd2c2ecdd05b4 *NAMESPACE
-48edf6d2dc7b05acc1d9b8ed0238290e *NEWS.md
+30787a436dfd865f5e20279d2d94b3c4 *NEWS.md
 454958c2a25414928472c1e9010fadb7 *R/apply_cut.R
 602ae9014903af4e1fec3a12e876645c *R/create_dcut.R
 38bbc5a2d5368f9217f7fd947f0e1d17 *R/data.R
@@ -41,7 +41,7 @@ cd049aa8191a8030d939d68d5194cb15 *inst/doc/modular.Rmd
 15e5f58a2e80fcdf86cf2655ec2cc849 *inst/doc/modular.html
 073455183f1853a8c00283846a5cfbf7 *inst/doc/variable_cut.R
 f8db198c7a9b46e85e514e7c1b06eace *inst/doc/variable_cut.Rmd
-cebbfc80946f4ba5f153c592e6ed6454 *inst/doc/variable_cut.html
+4e537b247fe387052eed10cdfd4614e4 *inst/doc/variable_cut.html
 890601c2bd40ac4820a298e78b3d85da *inst/doc/wrapper.R
 e6f9c51e5973b8ffa2fa8b0e328c47c2 *inst/doc/wrapper.Rmd
 5ef551d49b458d0294375f7d508fc092 *inst/doc/wrapper.html
@@ -72,9 +72,9 @@ b663900d6d669fde7c3767a11cb6734d *tests/testthat/test-date_cut.R
 5b7367796aebdadc92609550263bfc56 *tests/testthat/test-drop_temp_vars.R
 b5f492e83e96c6dcefd50b40bd42fbec *tests/testthat/test-impute_dcutdtc.R
 6663ec390dd50d0cab9e2fb1c66438b3 *tests/testthat/test-impute_sdtm.R
-110a8983c786faa6d64cb70b437e19c6 *tests/testthat/test-process_cut.R
+781475564e95ff075c88a46d78f3600c *tests/testthat/test-process_cut.R
 eb2132dfd79501c95e7bd247c6f155fd *tests/testthat/test-pt_cut.R
-48752d5b4e679f9284ac49cb6490f431 *tests/testthat/test-read_out.R
+aa1dd936a0be673983ee4d1faed28d4d *tests/testthat/test-read_out.R
 3b21a91ab0549fa6089f10f17cbbad44 *tests/testthat/test-special_dm_cut.R
 19697724eb52d94fd91e3e0c8f0594b8 *vignettes/contribution_model.Rmd
 d72333b287bd323c17a095fbbf50985b *vignettes/datacutr.Rmd
