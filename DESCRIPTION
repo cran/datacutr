@@ -1,7 +1,7 @@
 Package: datacutr
 Type: Package
 Title: SDTM Datacut
-Version: 0.2.2
+Version: 0.2.3
 Authors@R: c(
     person("Tim", "Barnett", email = "timothy.barnett@roche.com", role = c("cph","aut", "cre")), 
     person("Nathan", "Rees", email = "nathan.rees@roche.com", role = c("aut")), 
@@ -28,11 +28,11 @@ Suggests: devtools, lintr, pkgdown, testthat, knitr, methods,
         rmarkdown, roxygen2, spelling, styler, usethis, covr
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2025-01-10 10:27:50 UTC; barnett1
+Packaged: 2025-02-03 08:54:27 UTC; barnett1
 Author: Tim Barnett [cph, aut, cre],
   Nathan Rees [aut],
   Alana Harris [aut],
   Cara Andrews [aut]
 Maintainer: Tim Barnett <timothy.barnett@roche.com>
 Repository: CRAN
-Date/Publication: 2025-01-10 10:40:01 UTC
+Date/Publication: 2025-02-03 09:20:02 UTC
