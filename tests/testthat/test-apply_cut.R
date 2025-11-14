@@ -26,8 +26,8 @@ input2 <- data.frame(
 
 expected2 <- data.frame(
   USUBJID = c("UXYZ123a", "UXYZ123b", "UXYZ123c"),
-  DTHDTC = c("", "24MAR2022", "25MAR2022"),
-  DTHFL = c("", "Y", "Y"),
+  DTHDTC = c(NA_character_, "24MAR2022", "25MAR2022"),
+  DTHFL = c(NA_character_, "Y", "Y"),
   stringsAsFactors = FALSE
 )
 
@@ -50,7 +50,7 @@ input3 <- data.frame(
 
 expected3 <- data.frame(
   USUBJID = c("UXYZ123a", "UXYZ123b", "UXYZ123c"),
-  DTHDTC = c("", "24MAR2022", "25MAR2022"),
+  DTHDTC = c(NA_character_, "24MAR2022", "25MAR2022"),
   stringsAsFactors = FALSE
 )
 
@@ -96,5 +96,39 @@ test_that("Test when all records have DCUT_TEMP_REMOVE='Y'", {
   expect_equal(
     apply_cut(dsin = input5, dcutvar = DCUT_TEMP_REMOVE, dthchangevar = NULL),
     expected5
+  )
+})
+
+
+### Test when input dataset is empty ###
+input_ae5 <- tibble::tribble(
+  ~STUDYID, ~USUBJID, ~AESEQ, ~AESTDTC,
+)
+
+expected_ae5 <- tibble::tribble(
+  ~STUDYID, ~USUBJID, ~AESEQ, ~AESTDTC,
+)
+
+test_that("Test when input dataset is empty", {
+  expect_equal(
+    apply_cut(dsin = input_ae5, dcutvar = DCUT_TEMP_REMOVE, dthchangevar = NULL),
+    expected_ae5
+  )
+})
+
+
+### Test when input dataset is empty ###
+input_dm <- tibble::tribble(
+  ~STUDYID, ~USUBJID, ~DTHFL, ~DTHDTC,
+)
+
+expected_dm <- tibble::tribble(
+  ~STUDYID, ~USUBJID, ~DTHFL, ~DTHDTC,
+)
+
+test_that("Test when input dataset is empty", {
+  expect_equal(
+    apply_cut(dsin = input_dm, dcutvar = DCUT_TEMP_REMOVE, dthchangevar = DCUT_TEMP_DTHCHANGE),
+    expected_dm
   )
 })

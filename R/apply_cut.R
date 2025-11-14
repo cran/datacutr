@@ -2,7 +2,7 @@
 #'
 #' @description Removes any records where the datacut flagging variable, usually called
 #' DCUT_TEMP_REMOVE, is marked as "Y". Also, sets the death related variables in DM
-#' (DTHDTC and DTHFL) to missing if the death after datacut flagging variable, usually
+#' (DTHDTC and DTHFL) to NA if the death after datacut flagging variable, usually
 #' called DCUT_TEMP_DTHCHANGE, is marked as "Y".
 #'
 #' @param dsin Name of input dataframe
@@ -12,7 +12,7 @@
 #' function - usually called DCUT_TEMP_DTHCHANGE.
 #'
 #' @return Returns the input dataframe, excluding any rows in which `dcutvar` is flagged as "Y".
-#' DTHDTC and DTHFL are set to missing for any records where `dthchangevar` is flagged as "Y". Any
+#' DTHDTC and DTHFL are set to NA for any records where `dthchangevar` is flagged as "Y". Any
 #' variables with the "DCUT_TEMP" prefix are removed.
 #'
 #' @export
@@ -39,38 +39,43 @@ apply_cut <- function(dsin, dcutvar, dthchangevar) {
   dcutvar <- assert_symbol(enexpr(dcutvar))
   dthchangevar <- enexpr(dthchangevar)
 
-  # Check if dataframe exists and whether required variables exists within them
-  assert_data_frame(dsin,
-    required_vars = exprs(!!dcutvar)
-  )
-
-  # Remove any rows where datacut flagging variable (dcutvar) is "Y"
-  out <- dsin %>%
-    filter(is.na(!!dcutvar) | !!dcutvar != "Y")
-
-  # Overwrite death variables if death change variable (dthchangevar) is "Y"
-  if (any(names(dsin) == expr_name(dthchangevar))) {
-    assert_symbol(dthchangevar)
-    if (any(names(dsin) == "DTHFL")) {
-      out <- out %>%
-        mutate(DTHFL = case_when(
-          as.character(!!dthchangevar) == "Y" ~ "",
-          TRUE ~ as.character(DTHFL)
-        ))
-      attributes(out$DTHFL)$label <- attributes(dsin$DTHFL)$label
-    }
-    if (any(names(dsin) == "DTHDTC")) {
-      out <- out %>%
-        mutate(DTHDTC = case_when(
-          as.character(!!dthchangevar) == "Y" ~ "",
-          TRUE ~ as.character(DTHDTC)
-        ))
-      attributes(out$DTHDTC)$label <- attributes(dsin$DTHDTC)$label
-    }
+  if (nrow(dsin) == 0L) {
+    out_final <- dsin
   }
 
-  # Drop temporary variables
-  out_final <- drop_temp_vars(dsin = out, drop_dcut_temp = TRUE)
+  if (nrow(dsin) > 0L) {
+    # Check if dataframe exists and whether required variables exists within them
+    assert_data_frame(dsin,
+      required_vars = exprs(!!dcutvar)
+    )
 
-  return(out_final)
+    # Remove any rows where datacut flagging variable (dcutvar) is "Y"
+    out <- dsin %>%
+      filter(is.na(!!dcutvar) | !!dcutvar != "Y")
+
+    # Overwrite death variables if death change variable (dthchangevar) is "Y"
+    if (any(names(dsin) == expr_name(dthchangevar))) {
+      assert_symbol(dthchangevar)
+      if (any(names(dsin) == "DTHFL")) {
+        out <- out %>%
+          mutate(DTHFL = case_when(
+            as.character(!!dthchangevar) == "Y" ~ NA_character_,
+            TRUE ~ as.character(DTHFL)
+          ))
+        attributes(out$DTHFL)$label <- attributes(dsin$DTHFL)$label
+      }
+      if (any(names(dsin) == "DTHDTC")) {
+        out <- out %>%
+          mutate(DTHDTC = case_when(
+            as.character(!!dthchangevar) == "Y" ~ NA_character_,
+            TRUE ~ as.character(DTHDTC)
+          ))
+        attributes(out$DTHDTC)$label <- attributes(dsin$DTHDTC)$label
+      }
+    }
+
+    # Drop temporary variables
+    out_final <- drop_temp_vars(dsin = out, drop_dcut_temp = TRUE)
+  }
+  out_final
 }

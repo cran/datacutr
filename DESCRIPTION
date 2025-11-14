@@ -1,7 +1,7 @@
 Package: datacutr
 Type: Package
 Title: SDTM Datacut
-Version: 0.2.3
+Version: 0.2.4
 Authors@R: c(
     person("Tim", "Barnett", email = "timothy.barnett@roche.com", role = c("cph","aut", "cre")), 
     person("Nathan", "Rees", email = "nathan.rees@roche.com", role = c("aut")), 
@@ -18,21 +18,22 @@ URL: https://pharmaverse.github.io/datacutr/,
 Encoding: UTF-8
 Language: en-US
 LazyData: true
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
 Depends: R (>= 4.1)
 Imports: admiraldev (>= 0.3.0), assertthat (>= 0.2.1), dplyr (>=
         1.0.5), lubridate (>= 1.7.4), magrittr (>= 1.5), purrr (>=
         0.3.3), stringr (>= 1.4.0), rlang (>= 0.4.4), tibble (>=
         3.0.0), reactable (>= 0.4.4)
-Suggests: devtools, lintr, pkgdown, testthat, knitr, methods,
-        rmarkdown, roxygen2, spelling, styler, usethis, covr
+Suggests: devtools, pkgdown, testthat, knitr, methods, rmarkdown,
+        roxygen2, spelling, usethis, covr, DT, cyclocomp
 VignetteBuilder: knitr
+Config/wants/development: lintr
 NeedsCompilation: no
-Packaged: 2025-02-03 08:54:27 UTC; barnett1
+Packaged: 2025-11-14 10:46:24 UTC; barnett1
 Author: Tim Barnett [cph, aut, cre],
   Nathan Rees [aut],
   Alana Harris [aut],
   Cara Andrews [aut]
 Maintainer: Tim Barnett <timothy.barnett@roche.com>
 Repository: CRAN
-Date/Publication: 2025-02-03 09:20:02 UTC
+Date/Publication: 2025-11-14 11:00:02 UTC
